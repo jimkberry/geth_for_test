@@ -1,5 +1,5 @@
 
-from config import CONFIG, setup_class_logger
+from .config import CONFIG, setup_class_logger
 import tempfile
 import os
 import subprocess

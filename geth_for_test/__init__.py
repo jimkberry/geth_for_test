@@ -1,2 +1,2 @@
 #
-from geth_runner import GethRunner
+from .geth_runner import GethRunner
