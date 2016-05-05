@@ -21,10 +21,13 @@ The point to this package is to provide a python-callable way to run `geth` as a
 
 ## Using in a python script ##
 
+TBD
+
 ## Using with non-python code ##
 
+TBD
 
----
+--
 let me know if you find anything or have any ideas.
 
 -jim
