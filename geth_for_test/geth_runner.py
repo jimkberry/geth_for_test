@@ -55,6 +55,7 @@ class GethRunner(object):
         if CONFIG['ext_accts']:
             self.addresses_to_fund.extend(CONFIG['ext_accts'])
         self._write_genesis() # real one
+        self._do_init()
         
 
     def _cleanup(self):
@@ -71,7 +72,6 @@ class GethRunner(object):
         # Replace computed vals
         baseDict['datadir'] = '--datadir {0}'.format(self.data_path)
         baseDict['password'] = '--password {0}'.format(self.passfile_path)            
-        baseDict['genesis'] = '--genesis {0}'.format(self.genesis_path)
         args = baseDict.values()
         if not setup:
             args += CONFIG['run_args'].values()
@@ -149,7 +149,13 @@ class GethRunner(object):
                         addr = match.group(1)
                         self.addresses_to_fund.append(addr)
                         self.log.info("New Addr: {0}".format(addr))
-                 
+ 
+    def _do_init(self):
+        '''
+        Must call 'geth init' before actually tring to run it
+        '''
+        result = self._exec_sync( ['init {0}'.format(self.genesis_path)])        
+     
 #
 # Public API
 #
@@ -158,7 +164,7 @@ class GethRunner(object):
         '''
         dict is keyed by the lower case argument name:
             { 'rpcport': '--rpcport "8545"' }
-        Note that full arg sped is required in the value.
+        Note that full arg spec is required in the value.
         Any arg already spcified will be replaced.
         If arg is not found it is put into the 
         '''

@@ -7,8 +7,7 @@ import os
 CONFIG = {
     'create_accts': 2,  # geth will create, fund and unlock this many accounts
                         # You'll have to ask it for the addresses
-    'ext_accts': ['43f41cdca2f6785642928bcd2265fe9aff02911a',
-                  ],  # geth will fund these, assuming you have them in a wallet somewhere
+    'ext_accts': ['0xe51f7e720f4201f8bdd9a1bfd935f738bd028315'],  # geth will fund these, assuming you have them in a wallet somewhere
         
     'data_path': None,  # if none will create a folder in a tmp area and delete it on exit
     'term_cmd': 'xterm -e sh -c \'{0}\'',  # geth + args is put into {0}
@@ -23,11 +22,10 @@ CONFIG = {
                      'shh': '--shh',
                      'rpc': '--rpc',
                      'rpcapi': '--rpcapi "eth,net,shh"',
-                     'rpcport': '--rpcport 8546',  # this one will often be changed              
+                     'rpcport': '--rpcport 8545',  # this one will often be changed              
                       # these require replacing with computed values
                      'datadir': '--datadir DATA_DIR',
-                     'password': '--password PASSFILE',                    
-                     'genesis': '--genesis $GENESIS',
+                     'password': '--password PASSFILE'
     },
           
     # added to base_args for async (final run) invocations
